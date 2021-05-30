@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const promptManager = () => {
     const employeeData = [];
@@ -7,22 +10,22 @@ const promptManager = () => {
         .prompt([
             {
                 type: "input",
-                name: "manager-name",
+                name: "managerName",
                 message: "What is the name of the manager?",
             },
             {
                 type: "input",
-                name: "manager-id",
+                name: "managerId",
                 message: "What is the manager's employee ID?",
             },
             {
                 type: "input",
-                name: "manager-email",
+                name: "managerEmail",
                 message: "What is the manager's E-Mail?",
             },
             {
                 type: "input",
-                name: "manager-office",
+                name: "managerOffice",
                 message: "What is the manager's office number?",
             },
             {
@@ -33,7 +36,9 @@ const promptManager = () => {
             },
         ])
         .then((manager) => {
-            employeeData.push(manager);
+            employeeData.push(
+                new Manager(manager.managerName, manager.managerId, manager.managerEmail, manager.managerOffice)
+            );
             switch (manager.addEmployee) {
                 case "Engineer":
                     return promptEngineer(employeeData);
@@ -54,22 +59,22 @@ const promptEngineer = (employeeData) => {
         .prompt([
             {
                 type: "input",
-                name: "engineer-name",
+                name: "engineerName",
                 message: "What is the name of the engineer?",
             },
             {
                 type: "input",
-                name: "engineer-id",
+                name: "engineerId",
                 message: "What is the engineer's employee ID?",
             },
             {
                 type: "input",
-                name: "engineer-email",
+                name: "engineerEmail",
                 message: "What is the engineer's E-Mail?",
             },
             {
                 type: "input",
-                name: "engineer-github",
+                name: "engineerGithub",
                 message: "What is the engineer's GitHub username?",
             },
             {
@@ -80,7 +85,14 @@ const promptEngineer = (employeeData) => {
             },
         ])
         .then((engineer) => {
-            employeeData.push(engineer);
+            employeeData.push(
+                new Engineer(
+                    engineer.engineerName,
+                    engineer.engineerId,
+                    engineer.engineerEmail,
+                    engineer.engineerGithub
+                )
+            );
             switch (engineer.addEmployee) {
                 case "Engineer":
                     return promptEngineer(employeeData);
@@ -101,22 +113,22 @@ const promptIntern = (employeeData) => {
         .prompt([
             {
                 type: "input",
-                name: "intern-name",
+                name: "internName",
                 message: "What is the name of the intern?",
             },
             {
                 type: "input",
-                name: "intern-id",
+                name: "internId",
                 message: "What is the intern's employee ID?",
             },
             {
                 type: "input",
-                name: "intern-email",
+                name: "internEmail",
                 message: "What is the intern's E-Mail?",
             },
             {
                 type: "input",
-                name: "intern-school",
+                name: "internSchool",
                 message: "What is the intern's school?",
             },
             {
@@ -127,7 +139,7 @@ const promptIntern = (employeeData) => {
             },
         ])
         .then((intern) => {
-            employeeData.push(intern);
+            employeeData.push(new Intern(intern.internName, intern.internId, intern.internEmail, intern.internSchool));
             switch (intern.addEmployee) {
                 case "Engineer":
                     return promptEngineer(employeeData);
@@ -139,7 +151,21 @@ const promptIntern = (employeeData) => {
         });
 };
 
-promptManager().then((employeeData) => console.log(employeeData));
+promptManager().then((employeeData) => {
+    employeeData.map((employee) => {
+        switch (employee.getRole()) {
+            case "Manager":
+                console.log(employee.getOffice());
+                return;
+            case "Engineer":
+                console.log(employee.getGithub());
+                return;
+            case "Intern":
+                console.log(employee.getSchool());
+                return;
+        }
+    });
+});
 
 // GIVEN a command-line application that accepts user input
 
