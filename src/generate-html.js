@@ -9,7 +9,7 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li>
+        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
         <li class="collection-item">Office Number: ${employee.getOffice()}</li>
     </ul>
 </div>
@@ -22,8 +22,8 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li>
-        <li class="collection-item">Github: ${employee.getGithub()}</li>
+        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
+        <a href="github.com/${employee.getGithub()}">"<li class="collection-item">Github: ${employee.getGithub()}</li></a>
     </ul>
 </div>
 </div>
@@ -36,7 +36,7 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li>
+        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
         <li class="collection-item">School: ${employee.getSchool}</li>
     </ul>
 </div>
@@ -47,7 +47,7 @@ const generateEmployeeCard = (employeeData) => {
         .join("");
 };
 
-const generateHTML = (employeeData) => {
+module.exports = (employeeData) => {
     return `
     <!DOCTYPE html>
     <html lang="en">

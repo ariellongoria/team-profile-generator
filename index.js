@@ -1,4 +1,6 @@
 const inquirer = require("inquirer");
+const { writeFile, copyFile } = require("./utils/generate-site");
+const generateSite = require("./src/generate-html");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -151,21 +153,10 @@ const promptIntern = (employeeData) => {
         });
 };
 
-promptManager().then((employeeData) => {
-    employeeData.map((employee) => {
-        switch (employee.getRole()) {
-            case "Manager":
-                console.log(employee.getOffice());
-                return;
-            case "Engineer":
-                console.log(employee.getGithub());
-                return;
-            case "Intern":
-                console.log(employee.getSchool());
-                return;
-        }
-    });
-});
+promptManager()
+    .then((employeeData) => generateSite(employeeData))
+    .then((pageHtml) => writeFile(pageHtml))
+    .then(() => copyFile());
 
 // GIVEN a command-line application that accepts user input
 
