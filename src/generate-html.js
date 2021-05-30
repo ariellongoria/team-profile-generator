@@ -9,7 +9,7 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
+        <li class="collection-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
         <li class="collection-item">Office Number: ${employee.getOffice()}</li>
     </ul>
 </div>
@@ -22,8 +22,8 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
-        <a href="github.com/${employee.getGithub()}">"<li class="collection-item">Github: ${employee.getGithub()}</li></a>
+        <li class="collection-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+        <li class="collection-item">Github: <a href="http://github.com/${employee.getGithub()}" target="_blank">${employee.getGithub()}</a></li>
     </ul>
 </div>
 </div>
@@ -36,8 +36,8 @@ const generateEmployeeCard = (employeeData) => {
     <span><h4>${employee.getRole()}</h4></span>
     <ul class="collection">
         <li class="collection-item">ID: ${employee.getId()}</li>
-        <a href="mailto:${employee.getEmail()}"><li class="collection-item">Email: ${employee.getEmail}</li></a>
-        <li class="collection-item">School: ${employee.getSchool}</li>
+        <li class="collection-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+        <li class="collection-item">School: ${employee.getSchool()}</li>
     </ul>
 </div>
 </div>
