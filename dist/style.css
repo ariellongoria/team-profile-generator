@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 0;
+}
+
+header {
+    padding: 0.75em 2em;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 500;
+
+    margin: 0.25em;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 30%;
+    margin: 0.5em 0.1em;
+}
+
+.card h3 {
+    font-size: 2rem;
+    padding: 0;
+    margin-top: 0.25em;
+}
+
+.card h4 {
+    font-size: 1.5rem;
+}
